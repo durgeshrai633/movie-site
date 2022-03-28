@@ -4,6 +4,8 @@
   margin: auto;
   gap: 10px;
   justify-content: center;
+  background-color: antiquewhite;
+  padding: 20px;
 }
 .select__sort{
     display: flex;
@@ -20,6 +22,7 @@ padding: 10px;
   flex-basis: 250px;
   border: 2px solid #e6e6e6;
   cursor: pointer;
+  background-color: white;
 }
 .products__card > img {
   width: 100%;
@@ -43,4 +46,9 @@ padding: 10px;
 .products__title {
   font-size: 16px;
   overflow: hidden;
+}
+.products__price,.products__category{
+    font-weight: 700;
+    font-size: 15px;
+
 }

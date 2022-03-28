@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   makeApiCall,
   sortHighToLow,
@@ -9,8 +10,9 @@ import "./product.css";
 function Product() {
   const dispatch = useDispatch();
   let products = useSelector((state) => state.products);
+  const navigate = useNavigate();
   const handleSort = (e) => {
-    if (e.target.value == "lowtohigh") {
+    if (e.target.value === "asc") {
       if (products.length) {
         dispatch(sortLowToHigh());
       }
@@ -25,19 +27,23 @@ function Product() {
   }, [dispatch]);
   return (
     <div>
-      <h2 style={{ textAlign: "center",margin:"30px" }}>Products</h2>
+      <h2 style={{ textAlign: "center", margin: "30px" }}>Products</h2>
       <div className='select__sort'>
         <h3>Sort By Price:</h3>
         <select name='sort' id='sort' onChange={handleSort}>
-          <option value='lowtohigh'>Low to high</option>
-          <option value='hightolow'>High to low</option>
+          <option value='asc'>low to high</option>
+          <option value='desc'>high to low</option>
         </select>
       </div>
       <div className='products'>
         {products.length &&
           products.map((product, index) => {
             return (
-              <div className='products__card' key={product.id}>
+              <div
+                className='products__card'
+                key={product.id}
+                onClick={() => navigate(`/products/${product.id}`)}
+              >
                 <img src={product.image} alt='' />
                 <div className='products__card__desc'>
                   <h3 className='products__title'>

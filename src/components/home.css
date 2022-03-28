@@ -1,3 +1,9 @@
 .home{
     text-align: center;
 }
+
+.products_link{
+    text-decoration: none;
+    font-size: 20px;
+    margin: 20px;
+}
